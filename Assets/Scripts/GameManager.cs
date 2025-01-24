@@ -66,24 +66,25 @@ public class GameManager : MonoBehaviour
                 //현재 점수를 최고 점수에 저장한다.
         //최고 점수가 없다면
             //현재 점수를 저장한다
-        if(PlayerPrefs.HasKey(key))
+        if(PlayerPrefs.HasKey(key))     // 최고 점수가 있다면
         {
             float best = PlayerPrefs.GetFloat(key);
-
-            if(best < time)
+            
+            // 최고 점수와 현재 점수를 비교
+            if (best < time)             
             {
-                PlayerPrefs.SetFloat(key, time);
-                bestScore.text = time.ToString("N2");
+                PlayerPrefs.SetFloat(key, time);        // 현재 점수가 최고 점수보다 높으면
+                bestScore.text = time.ToString("N2");   // 최고점수 키값을 갱신해준다
             }
             else
             {
-                bestScore.text = best.ToString("N2");
+                bestScore.text = best.ToString("N2");   // 아니면 최고점수로 다시 출력
             }
         }
         else 
         {
-            PlayerPrefs.SetFloat(key, time);
-            bestScore.text = time.ToString("N2");
+            PlayerPrefs.SetFloat(key, time);            // 기록된 최고점수가 없을 경우
+            bestScore.text = time.ToString("N2");       // 현재 점수를 최고점수로 갱신
         }
 
         //판넬 띄우기
